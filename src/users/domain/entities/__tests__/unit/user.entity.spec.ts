@@ -41,4 +41,16 @@ describe('User Entity unit tests', () => {
     expect(sut.createdAt).toBeDefined()
     expect(sut.createdAt).toBeInstanceOf(Date)
   })
+
+  it('should update name field', () => {
+    sut.updateName('other name')
+
+    expect(sut.name).toEqual('other name')
+  })
+
+  it('should update password field', () => {
+    sut.updatePassword('new password')
+
+    expect(sut.password).toEqual('new password')
+  })
 })
