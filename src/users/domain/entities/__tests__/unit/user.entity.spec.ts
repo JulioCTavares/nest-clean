@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 import { UserEntity, UserProps } from '../../user.entity'
 import { userDataBuilder } from '../../testing/helpers/user-data-builder'
 
-describe('User Entity', () => {
+describe('User Entity unit tests', () => {
   let props: UserProps
   let sut: UserEntity
 
