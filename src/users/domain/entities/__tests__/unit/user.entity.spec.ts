@@ -1,18 +1,21 @@
 import { faker } from '@faker-js/faker'
 import { UserEntity, UserProps } from '../../user.entity'
 import { userDataBuilder } from '../../testing/helpers/user-data-builder'
+import { vi } from 'vitest'
 
 describe('User Entity unit tests', () => {
   let props: UserProps
   let sut: UserEntity
 
   beforeEach(() => {
+    UserEntity.validate = vi.fn()
     props = userDataBuilder({})
 
     sut = new UserEntity(props)
   })
 
   it('Constructor Method', () => {
+    expect(UserEntity.validate).toHaveBeenCalled()
     expect(sut.props.name).toEqual(props.name)
     expect(sut.props.email).toEqual(props.email)
     expect(sut.props.password).toEqual(props.password)
@@ -45,12 +48,14 @@ describe('User Entity unit tests', () => {
   it('should update name field', () => {
     sut.updateName('other name')
 
+    expect(UserEntity.validate).toHaveBeenCalled()
     expect(sut.name).toEqual('other name')
   })
 
   it('should update password field', () => {
     sut.updatePassword('new password')
 
+    expect(UserEntity.validate).toHaveBeenCalled()
     expect(sut.password).toEqual('new password')
   })
 })
