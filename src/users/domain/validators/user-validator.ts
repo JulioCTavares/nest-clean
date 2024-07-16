@@ -10,7 +10,7 @@ import {
 import { UserProps } from '../entities/user.entity'
 import { ClassValidatorFields } from '@/shared/domain/validators/class-validator-fields'
 
-class UserRules {
+export class UserRules {
   @IsNotEmpty()
   @MaxLength(255)
   @IsString()
@@ -24,6 +24,7 @@ class UserRules {
   @IsNotEmpty()
   @IsString()
   @MinLength(6)
+  @MaxLength(100)
   password: string
 
   @IsOptional()
